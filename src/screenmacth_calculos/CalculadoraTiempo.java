@@ -1,8 +1,8 @@
 package screenmacth_calculos;
 
-import screenmatch.Pelicula;
-import screenmatch.Serie;
-import screenmatch.Titulo;
+import screenmatch.modelos.Pelicula;
+import screenmatch.modelos.Serie;
+import screenmatch.modelos.Titulo;
 
 
 public class CalculadoraTiempo {

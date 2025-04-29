@@ -1,8 +1,8 @@
-package screenmatch;
+package screenmatch.modelos;
 
-import screenmacth_calculos.Clasificacion;
+import screenmatch.calculos.Clasificable;
 
-public class Pelicula extends Titulo implements Clasificacion {
+public class Pelicula extends Titulo implements Clasificable {
     private String director;
 
     public String getDirector() {
@@ -15,7 +15,6 @@ public class Pelicula extends Titulo implements Clasificacion {
 
     @Override
     public int getClasificacion() {
-        return (int) (calculaMedia() / 2);
+        return (int) calculaMediaEvaluaciones() / 2;
     }
 }
-

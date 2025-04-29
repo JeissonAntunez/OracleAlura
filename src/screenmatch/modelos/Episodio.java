@@ -1,15 +1,11 @@
-package screenmatch;
+package screenmatch.modelos;
 
-import screenmacth_calculos.Clasificacion;
+import screenmatch.calculos.Clasificable;
 
-public class Episodio  implements Clasificacion {
-
+public class Episodio implements Clasificable {
     private int numero;
-
     private String nombre;
-
     private Serie serie;
-
     private int totalVisualizaciones;
 
     public int getTotalVisualizaciones() {
@@ -46,7 +42,7 @@ public class Episodio  implements Clasificacion {
 
     @Override
     public int getClasificacion() {
-        if(totalVisualizaciones > 100){
+        if (totalVisualizaciones > 100) {
             return 4;
         } else {
             return 2;

@@ -1,64 +1,77 @@
 package screenmatch;
 
-import screenmacth_calculos.CalculadoraTiempo;
-import screenmacth_calculos.FiltroRecomendaciones;
+import screenmatch.calculos.CalculadoraDeTiempo;
+import screenmatch.calculos.FiltroRecomendacion;
+import screenmatch.modelos.Episodio;
+import screenmatch.modelos.Pelicula;
+import screenmatch.modelos.Serie;
+
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-        Pelicula mipelicula = new Pelicula();
-        mipelicula.setNombre("Encato");
-        mipelicula.setFechaDeLanzamiento(2021);
-        mipelicula.setDuracionEnMinutos(120);
+        Pelicula miPelicula = new Pelicula();
+        miPelicula.setNombre("Encanto");
+        miPelicula.setFechaDeLanzamiento(2021);
+        miPelicula.setDuracionEnMinutos(180);
+        System.out.println("Duración de la película: " + miPelicula.getDuracionEnMinutos());
 
-        mipelicula.muestraFichaTecnica();
-        mipelicula.evalua(20.0);
-        mipelicula.evalua(20.0);
-        mipelicula.evalua(20.0);
-        mipelicula.evalua(20.0);
-
-        System.out.println(mipelicula.getSumaDeLasEvaluaciones());
-        System.out.println(mipelicula.getContador());
-        System.out.println(mipelicula.calculaMedia());
-        System.out.println("**********************");
-
-        Serie casaDragon = new Serie();
-        casaDragon.setNombre("La casa del dragón");
-        casaDragon.setFechaDeLanzamiento(2022);
-        casaDragon.setTemporadas(1);
-        casaDragon.setMinutosPorEpisodio(50);
-        casaDragon.setEpisodioPorTemporada(10);
-        casaDragon.muestraFichaTecnica();
-        System.out.println(casaDragon.getDuracionEnMinutos());
+        miPelicula.muestraFichaTecnica();
+        miPelicula.evalua(8);
+        miPelicula.evalua(5);
+        miPelicula.evalua(10);
+        System.out.println("Total de evaluaciones: " + miPelicula.getTotalDeEvaluaciones());
+        System.out.println(miPelicula.calculaMediaEvaluaciones());
 
 
-
-
-
+        Serie lost = new Serie();
+        lost.setNombre("Lost");
+        lost.setFechaDeLanzamiento(2000);
+        lost.muestraFichaTecnica();
+        lost.setTemporadas(10);
+        lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("Duracion de la série: " + lost.getDuracionEnMinutos());
 
         Pelicula otraPelicula = new Pelicula();
-        otraPelicula.setNombre("Matrix");
-        otraPelicula.setFechaDeLanzamiento(1998);
-        otraPelicula.setDuracionEnMinutos(180);
-        System.out.println();
+        otraPelicula.setNombre("Avatar");
+        otraPelicula.setFechaDeLanzamiento(2023);
+        otraPelicula.setDuracionEnMinutos(200);
 
-        CalculadoraTiempo calculadora = new CalculadoraTiempo();
-        calculadora.incluye(mipelicula);
-        calculadora.incluye(casaDragon);
-        calculadora.incluye(otraPelicula);
-        System.out.println(calculadora.getTiempoTotal());
+        CalculadoraDeTiempo calculadora = new CalculadoraDeTiempo();
+        calculadora.incluido(miPelicula);
+        calculadora.incluido(otraPelicula);
+        calculadora.incluido(lost);
         System.out.println(calculadora.getTiempoTotal());
 
-
-        FiltroRecomendaciones filtroRecomendaciones = new FiltroRecomendaciones();
-        filtroRecomendaciones.filtra(mipelicula);
+        FiltroRecomendacion filtro = new FiltroRecomendacion();
+        filtro.filtra(miPelicula);
 
         Episodio episodio = new Episodio();
         episodio.setNumero(1);
-        episodio.setNombre("La casa Targaryen");
-        episodio.setSerie(casaDragon);
-        episodio.setTotalVisualizaciones(50);
+        episodio.setSerie(lost);
+        episodio.setTotalVisualizaciones(300);
+        filtro.filtra(episodio);
 
-        filtroRecomendaciones.filtra(episodio);
 
+
+
+        var peliculaDeBruno = new Pelicula();
+        peliculaDeBruno.setNombre("El señor de los anillos");
+        peliculaDeBruno.setDuracionEnMinutos(180);
+        peliculaDeBruno.setFechaDeLanzamiento(2001);
+
+
+        ArrayList<Pelicula> listaDePeliculas = new ArrayList<>();
+        listaDePeliculas.add(peliculaDeBruno);
+        listaDePeliculas.add(miPelicula);
+        listaDePeliculas.add(otraPelicula);
+
+
+        System.out.println("Tamaño de la lista: " + listaDePeliculas.size());
+        System.out.println("La primera pelicula es:  " + listaDePeliculas.get(0).getNombre());
+
+        System.out.println(listaDePeliculas);
+        System.out.println(listaDePeliculas.get(0).toString());
     }
 }
