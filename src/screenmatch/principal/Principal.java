@@ -1,4 +1,4 @@
-package screenmatch;
+package screenmatch.principal;
 
 import screenmatch.calculos.CalculadoraDeTiempo;
 import screenmatch.calculos.FiltroRecomendacion;
@@ -7,12 +7,10 @@ import screenmatch.modelos.Pelicula;
 import screenmatch.modelos.Serie;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Principal {
     public static void main(String[] args) {
-        Pelicula miPelicula = new Pelicula("Encanto");
-        miPelicula.setFechaDeLanzamiento(2021);
+        Pelicula miPelicula = new Pelicula("Encanto",2019);
         miPelicula.setDuracionEnMinutos(180);
         System.out.println("Duración de la película: " + miPelicula.getDuracionEnMinutos());
 
@@ -24,19 +22,15 @@ public class Principal {
         System.out.println(miPelicula.calculaMediaEvaluaciones());
 
 
-        Serie lost = new Serie();
-        lost.setNombre("Lost");
-        lost.setFechaDeLanzamiento(2000);
+        Serie lost = new Serie("GAME OF TRONS",2020);
         lost.muestraFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(50);
         System.out.println("Duracion de la série: " + lost.getDuracionEnMinutos());
 
-        Pelicula otraPelicula = new Pelicula("El señor de los anillos");
-        otraPelicula.setFechaDeLanzamiento(2023);
+        Pelicula otraPelicula = new Pelicula("Avatar", 2002);
         otraPelicula.setDuracionEnMinutos(200);
-
         CalculadoraDeTiempo calculadora = new CalculadoraDeTiempo();
         calculadora.incluido(miPelicula);
         calculadora.incluido(otraPelicula);
@@ -55,9 +49,8 @@ public class Principal {
 
 
 
-        var peliculaDeBruno = new Pelicula("El señor de los anillos");
+        var peliculaDeBruno = new Pelicula("El señor de los anillos",2001);
         peliculaDeBruno.setDuracionEnMinutos(180);
-        peliculaDeBruno.setFechaDeLanzamiento(2001);
 
 
         ArrayList<Pelicula> listaDePeliculas = new ArrayList<>();
@@ -86,6 +79,9 @@ public class Principal {
 
 
         Object objeto = peliculaDeBruno;
+
+
+
 
     }
 }
